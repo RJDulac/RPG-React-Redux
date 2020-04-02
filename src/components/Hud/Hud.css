@@ -1,6 +1,3 @@
-.health-bars-container span {
-  padding-right: 2rem;
-}
 .health-bars-container {
   display: flex;
   justify-content: space-evenly;

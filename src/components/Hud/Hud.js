@@ -9,8 +9,8 @@ const Hud = ({ playerHealthAmount, playerHealth, monsterHealthAmount }) => {
   return (
     <div>
       <div className="health-bars-container">
-        <HealthBar healthAmount={playerHealthAmount} name="Player Health:" />
-        <HealthBar healthAmount={monsterHealthAmount} name="Monster Health:" />
+        <HealthBar healthAmount={playerHealthAmount} name="Player Health" />
+        <HealthBar healthAmount={monsterHealthAmount} name="Monster Health" />
       </div>
     </div>
   );
