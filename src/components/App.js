@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import HealthBar from "./Health/HealthBar";
+import TakeDamage from "./Health/TakeDamage";
+import Heal from "./Health/Heal";
+import FullHealth from "./Health/FullHealth";
 
 import { playerHealth } from "../actions";
 
@@ -9,31 +12,22 @@ const App = ({ playerHealthAmount, playerHealth }) => {
   return (
     <div>
       <HealthBar healthAmount={playerHealthAmount} />
-      <button
-        onClick={() =>
-          playerHealth(
-            playerHealthAmount <= 0
-              ? (playerHealthAmount = 0)
-              : playerHealthAmount - 20
-          )
-        }
-      >
-        Take damage
-      </button>
-      <button
-        onClick={() =>
-          playerHealth(
-            playerHealthAmount >= 100
-              ? (playerHealthAmount = 100)
-              : playerHealthAmount + 20
-          )
-        }
-      >
-        Heal
-      </button>
-      <button onClick={() => playerHealth((playerHealthAmount = 100))}>
-        Full Heal
-      </button>
+      <TakeDamage
+        // action on health - player or monster - action neeeded - amount of damage dealt
+        healthAmount={playerHealthAmount}
+        healthAction={playerHealth}
+        damageAmount={10}
+      />
+      <Heal
+        // action on health - health amount from state - amount of health healed
+        healthAction={playerHealth}
+        healthAmount={playerHealthAmount}
+        healAmount={20}
+      />
+      <FullHealth
+        healthAction={playerHealth}
+        healthAmount={playerHealthAmount}
+      />
       <p>{playerHealthAmount}</p>
     </div>
   );
