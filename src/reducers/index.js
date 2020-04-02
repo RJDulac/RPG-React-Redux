@@ -1,12 +1,19 @@
 import { combineReducers } from "redux";
+import { PLAYER_HEALTH } from "../actions/types";
 
-const health = (health = 100, action) => {
-  if (action.type === "CHANGE_HEALTH") {
-    return action.payload;
+const playerHealthAmount = (playerHealthAmount = 100, action) => {
+  switch (action.type) {
+    case PLAYER_HEALTH:
+      return action.payload;
+    default:
+      return playerHealthAmount;
   }
-  return health;
+  // if (action.type === "CHANGE_playerHealth") {
+  //   return action.payload;
+  // }
+  // return playerHealth;
 };
 
 export default combineReducers({
-  health
+  playerHealthAmount
 });

@@ -1,0 +1,2 @@
+export const PLAYER_HEALTH = "PLAYER_HEALTH";
+export const MONSTER_HEALTH = "MONSTER_HEALTH";

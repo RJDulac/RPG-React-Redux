@@ -1,30 +1,45 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { changeHealth } from "../actions";
+import HealthBar from "./Health/HealthBar";
 
-const App = ({ health, changeHealth }) => {
+import { playerHealth } from "../actions";
+
+const App = ({ playerHealthAmount, playerHealth }) => {
   return (
     <div>
+      <HealthBar healthAmount={playerHealthAmount} />
       <button
-        onClick={() => changeHealth(health <= 0 ? (health = 0) : health - 20)}
+        onClick={() =>
+          playerHealth(
+            playerHealthAmount <= 0
+              ? (playerHealthAmount = 0)
+              : playerHealthAmount - 20
+          )
+        }
       >
         Take damage
       </button>
       <button
         onClick={() =>
-          changeHealth(health >= 100 ? (health = 100) : health + 20)
+          playerHealth(
+            playerHealthAmount >= 100
+              ? (playerHealthAmount = 100)
+              : playerHealthAmount + 20
+          )
         }
       >
         Heal
       </button>
-      <button onClick={() => changeHealth((health = 100))}>Full Heal</button>
-      <p>{health}</p>
+      <button onClick={() => playerHealth((playerHealthAmount = 100))}>
+        Full Heal
+      </button>
+      <p>{playerHealthAmount}</p>
     </div>
   );
 };
 const mapStateToProps = state => {
-  console.log(state);
-  return state;
+  console.log(state.playerHealthAmount);
+  return { playerHealthAmount: state.playerHealthAmount };
 };
-export default connect(mapStateToProps, { changeHealth })(App);
+export default connect(mapStateToProps, { playerHealth })(App);
