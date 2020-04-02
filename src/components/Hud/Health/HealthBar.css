@@ -11,7 +11,7 @@
   background-color: gray;
   border: solid black 2px;
   width: 40%;
-  padding: 0.3rem;
+  padding: 0.6rem;
   display: inline-block;
   z-index: 1;
 }
@@ -19,4 +19,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.health-bar-container span:last-of-type {
+  padding-top: 0.4rem;
 }
