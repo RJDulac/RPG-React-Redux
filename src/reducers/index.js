@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { PLAYER_HEALTH } from "../actions/types";
+import { PLAYER_HEALTH, MONSTER_HEALTH } from "../actions/types";
 
 const playerHealthAmount = (playerHealthAmount = 100, action) => {
   switch (action.type) {
@@ -8,12 +8,18 @@ const playerHealthAmount = (playerHealthAmount = 100, action) => {
     default:
       return playerHealthAmount;
   }
-  // if (action.type === "CHANGE_playerHealth") {
-  //   return action.payload;
-  // }
-  // return playerHealth;
+};
+
+const monsterHealthAmount = (monsterHealthAmount = 100, action) => {
+  switch (action.type) {
+    case MONSTER_HEALTH:
+      return action.payload;
+    default:
+      return monsterHealthAmount;
+  }
 };
 
 export default combineReducers({
-  playerHealthAmount
+  playerHealthAmount,
+  monsterHealthAmount
 });

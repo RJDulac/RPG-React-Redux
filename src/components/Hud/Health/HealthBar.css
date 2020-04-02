@@ -1,0 +1,13 @@
+.health-bar {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black 2px;
+  background-color: #228b22;
+}
+.health-bar-container {
+  background-color: gray;
+  width: 40%;
+  display: inline-block;
+}

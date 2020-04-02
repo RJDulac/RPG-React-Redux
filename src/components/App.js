@@ -1,17 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import HealthBar from "./Health/HealthBar";
-import TakeDamage from "./Health/TakeDamage";
-import Heal from "./Health/Heal";
-import FullHealth from "./Health/FullHealth";
+import HealthBar from "./Hud/Health/HealthBar";
+import TakeDamage from "./Hud/Health/TakeDamage";
+import Heal from "./Hud/Health/Heal";
+import FullHealth from "./Hud/Health/FullHealth";
 
-import { playerHealth } from "../actions";
+import { playerHealth, monsterHealth } from "../actions";
+import Hud from "./Hud/Hud";
 
-const App = ({ playerHealthAmount, playerHealth }) => {
+const App = ({ playerHealthAmount, playerHealth, monsterHealthAmount }) => {
   return (
     <div>
-      <HealthBar healthAmount={playerHealthAmount} />
+      <Hud />
+
       <TakeDamage
         // action on health - player or monster - action neeeded - amount of damage dealt
         healthAmount={playerHealthAmount}
@@ -34,6 +36,9 @@ const App = ({ playerHealthAmount, playerHealth }) => {
 };
 const mapStateToProps = state => {
   console.log(state.playerHealthAmount);
-  return { playerHealthAmount: state.playerHealthAmount };
+  return {
+    playerHealthAmount: state.playerHealthAmount,
+    monsterHealthAmount: state.monsterHealthAmount
+  };
 };
-export default connect(mapStateToProps, { playerHealth })(App);
+export default connect(mapStateToProps, { playerHealth, monsterHealth })(App);
